@@ -9,19 +9,21 @@ type InventoryProviderProps = {
   children: React.ReactNode;
 };
 
+type StatsType = {
+  totalProducts: number | null;
+  totalStoreValue: number | null;
+  outOfStocks: number | null;
+  noOfCategory: number | null;
+};
+
 const InventoryProvider: FC<InventoryProviderProps> = ({ children }) => {
   const [inventory, setInventory] = useState<InventoryType[]>();
 
-  const [totalProducts, setTotalProducts] = useState<number | null>(null);
-  const [totalStoreValue, setTotalStoreValue] = useState<number | null>(null);
-  const [outOfStocks, setOutOfStocks] = useState<number | null>(null);
-  const [noOfCategory, setNoOfCategory] = useState<number | null>(null);
-
-  const [stats, setStats] = useState({
-    totalProducts: 0,
-    totalStoreValue: 0,
-    outOfStocks: 0,
-    noOfCategory: 0,
+  const [stats, setStats] = useState<StatsType>({
+    totalProducts: null,
+    totalStoreValue: null,
+    outOfStocks: null,
+    noOfCategory: null,
   });
 
   const { data: inventoryData } = useGetInventory();

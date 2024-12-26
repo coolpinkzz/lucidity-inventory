@@ -5,6 +5,7 @@ import axios from "axios";
 
 export async function getInventoryAPI(): Promise<InventoryType[]> {
   try {
+    // URL can be move to ENV
     const response = await axios.get(
       "https://dev-0tf0hinghgjl39z.api.raw-labs.com/inventory"
     );

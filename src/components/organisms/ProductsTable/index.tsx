@@ -2,7 +2,6 @@ import { TABLE_HEADER } from "@/constant/inventory-table-header";
 import { useInventory } from "@/context/inventory/context";
 import { InventoryType } from "@/type/inventory";
 import React from "react";
-import { openModal } from "../Modal/ModalManager";
 import EditProductForm from "../EditProductForm/EditProductForm";
 import { useAuth } from "@/context/auth/context";
 import { triggerSuccess } from "@/utils/toast";
@@ -10,13 +9,15 @@ import { MdEdit } from "react-icons/md";
 import { FaTrash } from "react-icons/fa";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import TableSkeleton from "@/components/atoms/TableSkeletion";
+import { useModal } from "@/context/modal";
 
 const ProductsTable = () => {
   const { inventory, deleteInventory, disableProduct } = useInventory();
   const { isAdmin } = useAuth();
+  const { showModal } = useModal();
   const handleEditIcon = (item: InventoryType, isProductDisable: boolean) => {
     if (isAdmin && !isProductDisable) {
-      openModal(
+      showModal(
         <EditProductForm productDetail={item} />,
         "h-[400px] w-[600px]" // Custom styles
       );

@@ -3,9 +3,9 @@ import InputText from "@/components/atoms/InputText";
 import { InventoryType } from "@/type/inventory";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { closeModal } from "../Modal/ModalManager";
 import { useInventory } from "@/context/inventory/context";
 import { triggerSuccess } from "@/utils/toast";
+import { useModal } from "@/context/modal";
 
 interface Props {
   productDetail: InventoryType;
@@ -14,6 +14,7 @@ interface Props {
 const EditProductForm = ({ productDetail }: Props) => {
   const { id, name, category, price, quantity, value } = productDetail;
   const { updateInventory } = useInventory();
+  const { closeModal } = useModal();
   const {
     register,
     handleSubmit,

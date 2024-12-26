@@ -9,7 +9,6 @@ import { RiExchangeDollarLine, RiShapesFill } from "react-icons/ri";
 const StatsWidgets = () => {
   const { totalProducts, totalStoreValue, outOfStocks, noOfCategory } =
     useInventory();
-  console.log(totalStoreValue);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
       <div className="bg-darkGreen rounded-lg p-6 transition-transform hover:shadow-slate-200 hover:shadow-sm">
@@ -19,7 +18,7 @@ const StatsWidgets = () => {
           </div>
           <div>
             <p className="text-white text-sm">Total product</p>
-            {totalProducts ? (
+            {totalProducts !== null ? (
               <p className="text-4xl font-bold mt-2">{totalProducts}</p>
             ) : (
               <Inventroyskeleton />
@@ -34,7 +33,7 @@ const StatsWidgets = () => {
           </div>
           <div>
             <p className="text-white text-sm">Total store value</p>
-            {totalStoreValue ? (
+            {totalStoreValue !== null ? (
               <p className="text-4xl font-bold mt-2">{totalStoreValue}</p>
             ) : (
               <Inventroyskeleton />
@@ -49,7 +48,7 @@ const StatsWidgets = () => {
           </div>
           <div>
             <p className="text-white text-sm">Out of stocks</p>
-            {outOfStocks ? (
+            {outOfStocks !== null ? (
               <p className="text-4xl font-bold mt-2">{outOfStocks}</p>
             ) : (
               <Inventroyskeleton />
@@ -64,7 +63,7 @@ const StatsWidgets = () => {
           </div>
           <div>
             <p className="text-white text-sm">No of Category</p>
-            {noOfCategory ? (
+            {noOfCategory !== null ? (
               <p className="text-4xl font-bold mt-2">{noOfCategory}</p>
             ) : (
               <Inventroyskeleton />
